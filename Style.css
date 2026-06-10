@@ -1,0 +1,25 @@
+.metal-card {
+    background: linear-gradient(135deg, #2c303b 0%, #1a1d24 100%);
+    border: 1px solid #4a5263;
+    border-radius: 12px;
+    box-shadow: inset 0 1px 1px rgba(255,255,255,0.1), 0 8px 16px rgba(0,0,0,0.5);
+    padding: 20px;
+    color: #e2e8f0;
+  }
+  
+  .status-badge {
+    background-color: rgba(0, 255, 135, 0.1);
+    border: 1px solid #00FF87;
+    color: #00FF87;
+    box-shadow: 0 0 10px rgba(0, 255, 135, 0.3);
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+  }
+  
+  .progress-bar-fill {
+    background: linear-gradient(90deg, #10B981, #00FF87);
+    box-shadow: 0 0 8px #00FF87;
+    height: 6px;
+    border-radius: 3px;
+  }

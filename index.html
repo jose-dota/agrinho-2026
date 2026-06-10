@@ -1,17 +1,334 @@
-<div class="metal-card">
-    <div class="metal-texture">
-      <div class="flex-header">
-        <h3>Sensor de Solo #01</h3>
-        <span class="status-badge">Ativo</span>
-      </div>
-      
-      <div class="metric-display">
-        <p class="value">84%</p>
-        <p class="label">Umidade Otimizada</p>
-      </div>
-      
-      <div class="progress-bar-bg">
-        <div class="progress-bar-fill" style="width: 84%"></div>
-      </div>
-    </div>
-  </div>
+<<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgroVerde - Sustentabilidade no Campo</title>
+    <style>
+        /* Configurações Gerais / Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f4f9fc; /* Branco levemente azulado */
+            color: #2c3e50;
+            line-height: 1.6;
+        }
+
+        /* Cabeçalho e Navegação */
+        header {
+            background-color: #ffffff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #0077b6; /* Azul Claro Principal */
+        }
+
+        .logo span {
+            color: #00b4d8; /* Azul Mais Claro */
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: #555;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-menu a:hover {
+            color: #0077b6;
+        }
+
+        /* Seção Hero (Destaque Principal) */
+        .hero {
+            background: linear-gradient(135deg, #e0f2fe 0%, #ffffff 100%);
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            color: #03045e;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        .btn-primary {
+            background-color: #0077b6;
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 25px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary:hover {
+            background-color: #0096c7;
+        }
+
+        /* Seção Sobre / Pilares */
+        .section {
+            max-width: 1200px;
+            margin: 60px auto;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 32px;
+            color: #03045e;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 3px;
+            background-color: #00b4d8;
+            margin: 10px auto 0;
+        }
+
+        .grid-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+            border-top: 4px solid #00b4d8;
+            transition: transform 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card h3 {
+            color: #0077b6;
+            margin-bottom: 15px;
+            font-size: 20px;
+        }
+
+        /* Seção de Conteúdo Detalhado */
+        .conteudo-flex {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            flex-wrap: wrap;
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+        }
+
+        .flex-text {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .flex-text h3 {
+            font-size: 24px;
+            color: #03045e;
+            margin-bottom: 15px;
+        }
+
+        .flex-img-placeholder {
+            flex: 1;
+            min-width: 300px;
+            background-color: #caf0f8;
+            height: 250px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #0077b6;
+            font-weight: bold;
+        }
+
+        /* Formulário de Contato */
+        .contato-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #555;
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #caf0f8;
+            border-radius: 4px;
+            background-color: #fcfdfe;
+            outline: none;
+        }
+
+        .form-group input:focus, .form-group textarea:focus {
+            border-color: #00b4d8;
+        }
+
+        /* Rodapé */
+        footer {
+            background-color: #03045e;
+            color: #ffffff;
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 80px;
+        }
+
+        footer p {
+            font-size: 14px;
+            opacity: 0.8;
+        }
+
+        /* Responsividade Básica */
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+            .hero h1 {
+                font-size: 32px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="nav-container">
+            <div class="logo">Agro<span>Sustentável</span></div>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="#inicio">Início</a></li>
+                    <li><a href="#pilares">Pilares</a></li>
+                    <li><a href="#tecnologia">Tecnologia</a></li>
+                    <li><a href="#contato">Contato</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="inicio" class="hero">
+        <div class="hero-content">
+            <h1>O Futuro do Agronegócio é Consciente</h1>
+            <p>Unindo a produtividade do campo com a preservação do meio ambiente. Descubra como a tecnologia e as práticas sustentáveis transformam a agricultura moderna.</p>
+            <a href="#pilares" class="btn-primary">Saiba Mais</a>
+        </div>
+    </section>
+
+    <section id="pilares" class="section">
+        <h2 class="section-title">Nossos Pilares</h2>
+        <div class="grid-cards">
+            <div class="card">
+                <h3>Gestão de Recursos</h3>
+                <p>Otimização do uso da água através de irrigação inteligente e captação de chuva, reduzindo o desperdício drasticamente.</p>
+            </div>
+            <div class="card">
+                <h3>Energia Limpa</h3>
+                <p>Incentivo ao uso de painéis solares e biomassa nas propriedades rurais, gerando autonomia e reduzindo a pegada de carbono.</p>
+            </div>
+            <div class="card">
+                <h3>Preservação do Solo</h3>
+                <p>Práticas como a rotação de culturas e o plantio direto que mantém os nutrientes da terra sem esgotar o ecossistema.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="tecnologia" class="section">
+        <h2 class="section-title">Inovação Verde</h2>
+        <div class="conteudo-flex">
+            <div class="flex-text">
+                <h3>Tecnologia a favor da natureza</h3>
+                <p>O uso de drones, sensores IoT (Internet das Coisas) e análise de dados no agronegócio permite monitorar pragas e a saúde do solo em tempo real. Isso significa uma aplicação muito mais precisa de insumos, evitando excessos e protegendo os lençóis freáticos.</p>
+            </div>
+            <div class="flex-img-placeholder">
+                [ Espaço para Imagem de Tecnologia Agrícola ]
+            </div>
+        </div>
+    </section>
+
+    <section id="contato" class="section">
+        <h2 class="section-title">Fale Conosco</h2>
+        <div class="contato-form">
+            <form onsubmit="event.preventDefault(); alert('Mensagem enviada com sucesso! (Simulação)');">
+                <div class="form-group">
+                    <label for="nome">Nome</label>
+                    <input type="text" id="nome" required placeholder="Seu nome completo">
+                </div>
+                <div class="form-group">
+                    <label for="email">E-mail</label>
+                    <input type="email" id="email" required placeholder="seu.email@exemplo.com">
+                </div>
+                <div class="form-group">
+                    <label for="mensagem">Mensagem</label>
+                    <textarea id="mensagem" rows="4" required placeholder="Como podemos ajudar no seu projeto sustentável?"></textarea>
+                </div>
+                <button type="submit" class="btn-primary" style="width: 100%; border-radius: 4px;">Enviar Mensagem</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 AgroSustentável. Cultivando um amanhã melhor.</p>
+    </footer>
+
+</body>
+</html>
